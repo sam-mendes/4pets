@@ -1,0 +1,14 @@
+<%= form_tag new_login_path, method: :post do %>
+	<p>
+		<%= label_tag :email, "Seu e-mail" %>
+		<%= email_field_tag :email, params[:email] %>
+	</p>
+	<p>
+		<%= label_tag :password, "Sua senha" %>
+		<%= password_field_tag :password %>
+	</p>
+	<p class="submit">
+		<%= submit_tag "Entrar" %>
+		<%= link_to "Voltar", root_path %>
+	</p>
+<% end %>

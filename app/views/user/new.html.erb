@@ -1,0 +1,23 @@
+<%= form_for @user, url: user_index_path do |f| %>
+	<%= render "shared/form_errors", record: @user %>
+	<p>
+		<%= f.label :name, "Seu nome" %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :email, "Seu e-mail" %>
+		<%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.label :password, "Sua senha" %>
+		<%= f.password_field :password %>
+	</p>
+	<p>
+		<%= f.label :password_confirmation, "Confirme sua senha" %>
+		<%= f.password_field :password_confirmation %>
+	</p>
+	<p class="submit">
+		<%= f.submit "Quero me cadastrar" %>
+		<%#=TODO  %>
+	</p>
+<% end %>
