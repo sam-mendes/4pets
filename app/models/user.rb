@@ -6,10 +6,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A.+@.+\..{2,4}\Z/
   validates_uniqueness_of :email
 
-  # def authenticate?
-  # 	self.authenticate()
-  # end
-
   def admin?
   	self.role.name == "admin"
   end

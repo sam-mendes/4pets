@@ -22,7 +22,7 @@ class LoginController < ApplicationController
 
 			redirect_to(*options)
 		else
-			flash[:alert] = "E-mail/senha inválidos."
+			flash.now[:alert] = "E-mail/senha inválidos."
 			render :new
 		end
 	end
