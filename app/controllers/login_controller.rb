@@ -5,21 +5,35 @@ class LoginController < ApplicationController
 	end
 
 	def create
-		user = User.find_by_email(params[:email])
-		
-		if user && user.authenticate(params[:password])
-			reset_session
-			session[:user_id] = user.id
-			message = { notice: "Olá, #{user.name}" }
-			if user.admin?
-				redirect_to admin_path, message	
+		user = User.find_by(email: params[:email])
+
+		if authenticate? user
+			
+			define_session user
+			
+			options = if user.admin?
+				[admin_path]
 			else
-				redirect_to user_index_path, message
+				[user_index_path]
 			end
+
+			flash_message = { notice: "Olá, #{user.name}" }
+			options << flash_message
+
+			redirect_to(*options)
 		else
 			flash[:alert] = "E-mail/senha inválidos."
 			render :new
 		end
 	end
-	
+
+	private 
+	def authenticate?(user)
+		user && user.authenticate(params[:password])
+	end
+
+	def define_session(user)
+		reset_session
+		session[:user_id] = user.id
+	end
 end
