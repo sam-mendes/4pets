@@ -60,5 +60,5 @@ Parapets::Application.routes.draw do
   get  "entrar" => "login#new", as: "new_login"
   post "entrar" => "login#create", as: false
 
-  get "admin" => "admin#index", as: "admin"
+  get "admin" => "admin#dashboard", as: "admin_dashboard"
 end

@@ -33,7 +33,7 @@ feature "Login" do
     fill_in "Sua senha", with: "test"
     click_button "Entrar"
 
-    expect(current_path).to eql(admin_path)
+    expect(current_path).to eql(admin_dashboard_path)
     #TODO others assertions
   end
   scenario "already logged in"

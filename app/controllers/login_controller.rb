@@ -12,7 +12,7 @@ class LoginController < ApplicationController
 			define_session user
 			
 			options = if user.admin?
-				[admin_path]
+				[admin_dashboard_path]
 			else
 				[user_index_path]
 			end
